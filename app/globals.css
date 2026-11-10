@@ -2948,14 +2948,3 @@ h3 {
     hyphens: auto;
   }
 }
-
-.nav-brand {
-  height: 54px;
-  padding: 0 12px;
-}
-
-.nav-brand img {
-  height: 46px;
-  max-width: 120px;
-  object-fit: contain;
-}
