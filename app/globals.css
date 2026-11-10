@@ -2948,3 +2948,13 @@ h3 {
     hyphens: auto;
   }
 }
+
+.nav-brand {
+  background: transparent;
+  padding: 0 14px 0 12px;
+}
+
+.nav-brand img {
+  height: 40px;
+  filter: brightness(0) invert(1);
+}
