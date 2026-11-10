@@ -39,7 +39,7 @@ export default function Services() {
 
         <div className="services-grid">
           {services.map((service) => (
-            <Link key={service.n} href="/services" className="svc">
+            <div key={service.n} className="svc">
               <div
                 className="svc-media"
                 style={{
@@ -49,11 +49,8 @@ export default function Services() {
               <span className="svc-num">{service.n}</span>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
-              <span className="svc-link">
-                Learn more <span aria-hidden="true">→</span>
-              </span>
               <i className="svc-line" />
-            </Link>
+            </div>
           ))}
         </div>
 
