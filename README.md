@@ -1,98 +1,94 @@
-# Gloss Nail Studio
+# Jawaka Catering – website refinement
 
-A booking website for a nail salon in Nairobi. Customers pick a style, choose a free day and time on a calendar, and send the booking to the salon on WhatsApp. The owner signs in to a private dashboard, sees today's clients first, and confirms or declines each request.
+A page-by-page visual and UX refinement of the Jawaka Catering website (jawaka.co.ke), rebuilt in Next.js. The goal was a simple, modern and minimal look: white and orange used sparingly, soft motion, short sections and no clutter.
 
-Live demo: https://nailshop-website-seven.vercel.app
+This is a front-end project. Forms open WhatsApp or Gmail with the details already filled in, so there is no backend to run yet.
 
-## How it works
+## Pages
 
-```mermaid
-flowchart LR
-    C([Customer]) --> W[React + Vite site<br/>hosted on Vercel]
-    O([Salon owner]) --> A[Admin dashboard<br/>/admin]
+| Page | What it does |
+| --- | --- |
+| Home | Full-screen hero slider, services preview, how it works, trusted-by strip and client testimonials |
+| About | Story, directors, mission and vision, core values and team |
+| Services | Catering for corporate events, weddings and private parties, plus an infographic-style "Why choose us" section |
+| Menu | One categorised menu (Breakfast, Lunch, Dinner, Supper) with search by dish or by price, and a quick-order basket |
+| Accommodation | Room cards with price per night, details, amenities, click-to-enlarge photos and a WhatsApp booking link |
+| Request a quote | Event quote form that sends the details to WhatsApp, with a link back to where the visitor came from |
+| Contact | Map, phone, email and WhatsApp, and a message form that opens a Gmail draft |
 
-    W -- "get_booked_slots()<br/>create_booking()" --> R[Supabase RPC functions<br/>validation + spam limit]
-    R --> DB[(Postgres<br/>bookings table)]
+There is also a styled 404 page, a sitemap and a robots file.
 
-    A -- "email + password" --> AU[Supabase Auth]
-    A -- "read / update<br/>if is_admin()" --> DB
+## Features worth noting
 
-    W -. "pre-filled message" .-> WA[WhatsApp<br/>to the salon]
-    WA -. "owner replies" .-> C
-```
-
-1. The customer chooses a style and an open slot. Taken slots are hidden.
-2. The site calls `create_booking`. The database validates everything and saves the booking as **pending**.
-3. A confirmation screen opens WhatsApp with the booking details pre-filled, so the salon hears about it straight away.
-4. The owner opens the dashboard, sees **Today** (clients today and how many bookings still need an answer), and presses **Confirm** or **Decline**.
-
-## Features
-
-- Month calendar with past days, Sundays and anything beyond 60 days disabled
-- Five daily time slots, Nairobi time
-- Custom style option and an optional inspiration link
-- Spam limit: a phone number can hold at most 2 upcoming bookings
-- Two people can never take the same slot (enforced by the database)
-- Owner dashboard with a Today view, a Pending, Confirmed, Done and Cancelled flow, and filters
-- Gallery, contact page and a home page with a location map
-- Responsive, with a mobile menu
+- **Menu search:** type a dish name, or a number like 200 to see dishes up to Ksh 200.
+- **Quick order:** add dishes with the + button, adjust or remove them in the order sheet, and send the order to WhatsApp. The basket is remembered if the page is refreshed.
+- **Photo viewer:** room photos open full size on click, and close with Esc or a click outside.
+- **Phone check:** the order and quote forms accept Kenyan mobile numbers only (for example 0712 345 678).
+- **Working contact links:** emails open Gmail on desktop and the mail app on phones, phone numbers dial, and WhatsApp links open a chat.
+- **Responsive:** checked from 320px phones up to large desktops with no sideways scrolling.
+- **Reduced motion:** animations are switched off for visitors who ask for less movement.
 
 ## Tech stack
 
-| Area | Choice |
-| --- | --- |
-| Front end | React, Vite, react-router-dom |
-| Back end | Supabase (Postgres, Row Level Security, Auth) |
-| Hosting | Vercel |
-| Notifications | WhatsApp click-to-chat link |
+- Next.js 16 (App Router) and React 19
+- TypeScript
+- Plain CSS in one stylesheet (`app/globals.css`) with CSS variables for colours and spacing
+- Plus Jakarta Sans through `next/font`
 
-## Security design
+Next.js 16 has breaking changes from older versions. The docs that match this version are in `node_modules/next/dist/docs/`.
 
-- The browser only holds the Supabase **publishable** key. The secret / service_role key is never used in this project and must never be added to it.
-- Row Level Security is on for every table. Visitors cannot read the `bookings` table at all.
-- Visitors only use two security-definer functions, `get_booked_slots` (returns taken times, no personal data) and `create_booking` (validates and inserts).
-- Dashboard access needs a Supabase Auth login whose email is listed in the `admins` table. The `is_admin()` function checks this inside the database, so hiding the page in the front end is not what protects the data.
-- A partial unique index (`booking_date, slot` where status is not cancelled) makes double booking impossible, even under simultaneous requests.
+## Getting started
+
+```
+npm install
+npm run dev
+```
+
+Then open http://localhost:3000. To use another port:
+
+```
+npm run dev -- --port 3100
+```
+
+Build for production:
+
+```
+npm run build
+npm run start
+```
 
 ## Project structure
 
 ```
-src/
-  App.jsx             layout, header, footer, home page, routes
-  Services.jsx        style gallery
-  Book.jsx            calendar and booking form
-  Contact.jsx         contact details and WhatsApp form
-  Admin.jsx           owner dashboard
-  brand.js            name, phone, location and map in one place
-  supabaseClient.js   safe Supabase client
-supabase.sql          full database setup
-vercel.json           single-page-app rewrite
+app/            pages, layout, sitemap, robots and the global stylesheet
+components/     Nav, Footer, Hero, MenuBrowser, RoomCard, QuoteForm, ContactForm and the rest
+lib/site.ts     contact details and helpers shared across the site
+public/images/  logos, hero photos, menu photos and room photos
+scripts/        image optimiser
 ```
 
-## Run it yourself
+## Changing the contact details
 
-1. Create a Supabase project.
-2. Open the SQL Editor and run `supabase.sql`.
-3. In Authentication, create the owner user (email and password), then add that email:
-   ```sql
-   insert into public.admins (email) values ('owner@example.com');
-   ```
-4. Create `.env.local` in the project root:
-   ```
-   VITE_SUPABASE_URL=https://YOUR-PROJECT.supabase.co
-   VITE_SUPABASE_ANON_KEY=YOUR-PUBLISHABLE-KEY
-   ```
-5. Install and start:
-   ```
-   npm install
-   npm run dev
-   ```
-6. Deploy to Vercel, add the same two variables in the project settings, then run `npx vercel --prod`.
+All phone numbers, emails, the address and the WhatsApp number live in one file: `lib/site.ts`. Change them there and every page updates.
 
-## Reusing it for another salon
+## Photos
 
-Edit `src/brand.js`: business name, location, WhatsApp number, phone and map links. Replace the photos in `public/french manicure/` and the style list in `Services.jsx`. Add the new owner's email to the `admins` table. Nothing else in the code carries a business name.
+- Menu photos go in `public/images/menu/` and are named after the dish, for example `chapo-and-tea.jpg`. A dish with no photo shows a small icon instead.
+- Room photos go in `public/images/rooms/` and are named after the room, for example `cosy.jpg`.
 
-## Status
+To shrink large photos (max width 1400px) run:
 
-Built and deployed as a portfolio project for a real-world salon booking workflow.
+```
+npm run optimize:images
+```
+
+This overwrites the photos in place, so keep a copy of the originals first.
+
+## Still to do
+
+- Moderate and Premium menu dishes
+- Real names and photos for the directors and team on the About page
+- Facebook, X and TikTok links
+- Email delivery and M-Pesa payment for the order and quote forms
+- Gallery page, once there are photos for it
+- Confirm the child rates on the Accommodation page (the age bands 5 – 11 and 5 – 17 overlap on the original site)
