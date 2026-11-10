@@ -1,0 +1,10 @@
+node_modules
+.next
+.env*.local
+next-env.d.ts
+jawaka-images.zip
+jawaka-images/
+new-images/
+menu-images.txt
+urls.txt
+urls2.txt
