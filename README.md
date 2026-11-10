@@ -82,13 +82,4 @@ To shrink large photos (max width 1400px) run:
 npm run optimize:images
 ```
 
-This overwrites the photos in place, so keep a copy of the originals first.
 
-## Still to do
-
-- Moderate and Premium menu dishes
-- Real names and photos for the directors and team on the About page
-- Facebook, X and TikTok links
-- Email delivery and M-Pesa payment for the order and quote forms
-- Gallery page, once there are photos for it
-- Confirm the child rates on the Accommodation page (the age bands 5 – 11 and 5 – 17 overlap on the original site)
