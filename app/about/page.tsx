@@ -8,10 +8,10 @@ export const metadata: Metadata = {
 
 const story = [
   'For nearly a decade, JAWAKA has been redefining excellence in the hospitality industry. What began as a vision nine years ago has evolved into a trusted partnership with an impressive portfolio of clients who continue to choose us for their most important occasions.',
-  "In the competitive landscape of hospitality, we don't just survive—we thrive. Our success stems from a simple yet powerful philosophy: genuine relationships drive exceptional results. Every client interaction, every community connection, and every service delivery is an opportunity to strengthen the bonds that have become the foundation of our growth.",
+  "In the competitive landscape of hospitality, we don't just survive—we thrive. Our success stems from a simple yet powerful philosophy: genuine relationships drive exceptional results. Every client interaction, every community connection and every service delivery is an opportunity to strengthen the bonds that have become the foundation of our growth.",
   "We believe that meeting expectations is just the starting point. Our mission is to consistently exceed what our customers envision, transforming their events and experiences into memorable moments that last a lifetime. This commitment to excellence isn't just a goal—it's embedded in everything we do.",
   'Quality service meets cutting-edge technology in our approach to hospitality. Our advanced customer feedback system creates a continuous loop of improvement, ensuring that every voice is heard and every insight shapes our operations. This technology-driven approach allows us to stay ahead of trends while maintaining the personal touch that defines exceptional hospitality.',
-  'As we continue to grow, our focus remains unchanged: building lasting relationships, delivering unparalleled service, and creating experiences that exceed expectations. The trust our clients and communities place in us drives our commitment to constant innovation and service excellence.',
+  'As we continue to grow, our focus remains unchanged: building lasting relationships, delivering unparalleled service and creating experiences that exceed expectations. The trust our clients and communities place in us drives our commitment to constant innovation and service excellence.',
 ]
 
 const directors = [
@@ -143,9 +143,9 @@ export default function AboutPage() {
               <h3>Our vision</h3>
               <p>
                 To lead the hospitality industry in East Africa by providing superior food
-                quality, event services, and value addition in an attractive environment. We
+                quality, event services and value addition in an attractive environment. We
                 seek to combine hospitality management with a commitment to innovation,
-                teamwork, and customer-driven excellence while providing our staff and
+                teamwork and customer-driven excellence while providing our staff and
                 business partners with opportunities for development and growth.
               </p>
             </article>

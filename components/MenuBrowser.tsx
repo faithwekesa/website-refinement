@@ -81,7 +81,7 @@ const items: Item[] = [
     name: 'French Fries',
     icon: 'fries',
     price: 150,
-    text: 'Golden, crispy, and perfectly salted, our French Fries are the ultimate irresistible side dish.',
+    text: 'Golden, crispy and perfectly salted, our French Fries are the ultimate irresistible side dish.',
   },
   {
     category: 'Breakfast',
@@ -97,7 +97,7 @@ const items: Item[] = [
     name: 'Masala tea',
     icon: 'cup',
     price: 160,
-    text: 'Savor the warmth of our Masala Tea, a rich and aromatic blend of black tea, milk, and a carefully balanced mix of fragrant spices.',
+    text: 'Savor the warmth of our Masala Tea, a rich and aromatic blend of black tea, milk and a carefully balanced mix of fragrant spices.',
   },
   {
     category: 'Breakfast',
@@ -137,7 +137,7 @@ const items: Item[] = [
     name: 'Veggie rice beef waru',
     icon: 'plate',
     price: 250,
-    text: 'A delicious medley of flavors: our Veggie Rice, Beef, and Waru features tender beef, a rich vegetable and potato stew, all served over a bed of fragrant rice.',
+    text: 'A delicious medley of flavors: our Veggie Rice, Beef and Waru features tender beef, a rich vegetable and potato stew, all served over a bed of fragrant rice.',
   },
   {
     category: 'Lunch',
@@ -145,7 +145,7 @@ const items: Item[] = [
     name: 'Ugali sukuma beef',
     icon: 'plate',
     price: 180,
-    text: 'Savor our classic comfort meal: Ugali, Sukuma, and Beef, a hearty plate of rich beef stew, sautéed collard greens, and a firm cornmeal staple.',
+    text: 'Savor our classic comfort meal: Ugali, Sukuma and Beef, a hearty plate of rich beef stew, sautéed collard greens and a firm cornmeal staple.',
   },
   {
     category: 'Dinner',
@@ -169,7 +169,7 @@ const items: Item[] = [
     name: 'Ugali eggs Sukuma',
     icon: 'plate',
     price: 200,
-    text: 'Enjoy a classic, satisfying meal with our Ugali, Eggs, and Sukuma, a hearty combination of a cornmeal staple, perfectly cooked eggs, and sautéed kale.',
+    text: 'Enjoy a classic, satisfying meal with our Ugali, Eggs and Sukuma, a hearty combination of a cornmeal staple, perfectly cooked eggs and sautéed kale.',
   },
   {
     category: 'Dinner',
@@ -193,7 +193,7 @@ const items: Item[] = [
     name: 'Ugali Cabbage eggs',
     icon: 'plate',
     price: 180,
-    text: 'Enjoy a simple and satisfying meal with our Ugali, Cabbage, and Eggs, a perfect combination of a hearty cornmeal staple, sautéed cabbage, and a perfectly cooked egg.',
+    text: 'Enjoy a simple and satisfying meal with our Ugali, Cabbage and Eggs, a perfect combination of a hearty cornmeal staple, sautéed cabbage and a perfectly cooked egg.',
   },
   {
     category: 'Supper',

@@ -20,7 +20,7 @@ const testimonials = [
     logo: '/images/knhcr.png',
     event: 'Conference catering',
     quote:
-      'Professional, punctual, and perfect execution. The catering service exceeded our expectations in every way.',
+      'Professional, punctual and perfect execution. The catering service exceeded our expectations in every way.',
   },
 ]
 
